@@ -1,0 +1,22 @@
+@import "../global";
+
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+//Select 2
+@import "../../coreui-pro/src/vendors/select2/css/select2.css";
+//Toastr
+@import "~toastr/build/toastr.css";
+//Simple Line Icons
+@import "~simple-line-icons/scss/simple-line-icons";
+//Datatables
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
+
+// Fix mobile footer
+.app-footer {
+    flex: 0 0;
+    padding-top: map-get($spacers, 3);
+    padding-bottom: map-get($spacers, 3);
+}
