@@ -44,11 +44,11 @@
 
 <body class="app header-fixed sidebar-fixed aside-menu-off-canvas aside-menu-hidden sidebar-lg-show">
 
-@include('layouts.header')
+@include('backend.layouts.header')
 
 <div class="app-body">
 
-    @include('layouts.sidebar')
+    @include('backend.layouts.sidebar')
 
 <!-- Main content -->
     <main class="main">
@@ -81,11 +81,11 @@
         </div>
         <!-- /.conainer-fluid -->
     </main>
-    @include('layouts.aside')
+    @include('backend.layouts.aside')
 
 </div>
 
-{{--@include('layouts.footer')--}}
+@include('backend.layouts.footer')
 
 {{--Scripts--}}
 @stack('before-scripts')

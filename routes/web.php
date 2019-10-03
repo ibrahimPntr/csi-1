@@ -15,3 +15,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+    require(__DIR__ . '/backend/master.php');
+});
