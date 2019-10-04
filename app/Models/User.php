@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,13 +11,17 @@ class User extends Authenticatable
 {
     use Notifiable, HasRoles;
 
+    const STUDENT = 1;
+    const LECTURER = 2;
+    const STAFF = 3;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'name', 'email', 'password',
     ];
 
     /**
@@ -37,4 +41,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function student()
+    {
+        return $this->hasOne(Student::class, 'id');
+    }
+
+    public function lecturer()
+    {
+        return $this->hasOne(Lecturer::class, 'id');
+    }
+
+    public function staff()
+    {
+        return $this->hasOne(Staff::class, 'id');
+    }
 }

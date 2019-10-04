@@ -13,7 +13,7 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $user = factory(App\User::class)->create([
+        $user = factory(App\Models\User::class)->create([
             'username' => 'admin',
             'name' => 'Administrator',
             'password' => bcrypt('admin'),
@@ -27,12 +27,14 @@ class AdminSeeder extends Seeder
         $manage_users = Permission::create(['name' => 'manage_users']);
         $manage_proposalkp = Permission::create(['name' => 'manage_proposalkp']);
 
-        $admin = Role::create(['name' => 'admin']);
+        $adminRole = Role::create(['name' => 'admin']);
+        $lecturerRole = Role::create(['name' => 'lecturers']);
+        $studentRole = Role::create(['name' => 'students']);
 
-        $admin->givePermissionTo($manage_lecturers);
-        $admin->givePermissionTo($manage_students);
-        $admin->givePermissionTo($manage_users);
-        $admin->givePermissionTo($manage_proposalkp);
+        $adminRole->givePermissionTo($manage_lecturers);
+        $adminRole->givePermissionTo($manage_students);
+        $adminRole->givePermissionTo($manage_users);
+        $adminRole->givePermissionTo($manage_proposalkp);
 
         $user->assignRole('admin');
     }

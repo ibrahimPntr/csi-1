@@ -55,18 +55,13 @@
 
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
-
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-
             @yield('breadcrumb')
 
-        <!-- Breadcrumb Menu-->
             <li class="breadcrumb-menu d-md-down-none">
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    @yield("breadcrumb-menu")
+                <div class="btn-group" role="group" aria-label="Button group">
+                    @yield('toolbar')
                 </div>
             </li>
-
         </ol>
 
 
