@@ -22,6 +22,8 @@ class AdminSeeder extends Seeder
             'active' => 1
         ]);
 
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
         $manage_lecturers = Permission::create(['name' => 'manage_lecturers']);
         $manage_students = Permission::create(['name' => 'manage_students']);
         $manage_users = Permission::create(['name' => 'manage_users']);

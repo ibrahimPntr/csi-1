@@ -21,7 +21,7 @@
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    Tambah Dosen
+                    <i class="fa fa-edit"></i> <strong>Tambah Dosen</strong>
                 </div>
 
                 {{-- CARD BODY--}}

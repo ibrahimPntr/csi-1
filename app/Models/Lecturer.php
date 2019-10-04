@@ -22,4 +22,9 @@ class Lecturer extends Model
     public function user(){
         return $this->hasOne(User::class, 'id');
     }
+
+    public function getEmailAttribute($value)
+    {
+        return optional($this->user)->email;
+    }
 }

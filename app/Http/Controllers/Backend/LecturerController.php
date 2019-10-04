@@ -57,37 +57,41 @@ class LecturerController extends Controller
         return view('backend.lecturers.show', compact('lecturer'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Lecturer  $lecturer
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Lecturer $lecturer)
     {
-        //
+        return view('backend.lecturers.edit', compact('lecturer'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Lecturer  $lecturer
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Lecturer $lecturer)
     {
-        //
+        $this->validate($request, Lecturer::$validation_rules);
+
+        $lecturer->update($request->only(
+            'nip',
+            'nidn',
+            'nik',
+            'name',
+            'birthplace',
+            'birthdate',
+            'phone'));
+
+        $lecturer->user->update([
+            'password' => bcrypt('secret'),
+            'email' => request('email'),
+            'status' => 1,
+        ]);
+
+        session()->flash('flash_success', 'Berhasil mengupdate data dosen '.$lecturer->name);
+        return redirect()->route('admin.lecturers.show', [$lecturer->id]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Lecturer  $lecturer
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Lecturer $lecturer)
     {
-        //
+        $user = User::find($lecturer->id);
+        $lecturer->delete();
+        optional($user)->delete();
+
+        session()->flash('flash_success', "Berhasil menghapus dosen ".$lecturer->name);
+        return redirect()->route('admin.lecturers.index');
     }
 }

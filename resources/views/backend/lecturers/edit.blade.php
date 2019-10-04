@@ -3,14 +3,14 @@
 @section('breadcrumb')
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
-        'Dosen' => route('admin.dosen.index'),
+        'Dosen' => route('admin.lecturers.index'),
         'Edit' => '#'
     ]) !!}
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn(route('admin.dosen.create'), 'icon-plus', 'Tambah Dosen') !!}
-    {!! cui_toolbar_btn(route('admin.dosen.index'), 'icon-list', 'List Dosen') !!}
+    {!! cui_toolbar_btn(route('admin.lecturers.create'), 'icon-plus', 'Tambah Dosen') !!}
+    {!! cui_toolbar_btn(route('admin.lecturers.index'), 'icon-list', 'List Dosen') !!}
 @endsection
 
 @section('content')
@@ -18,16 +18,16 @@
         <div class="col-md-12">
             <div class="card">
 
-                {{ Form::model($dosen, ['route' => ['admin.dosen.update', $dosen->id], 'method' => 'patch']) }}
+                {{ html()->modelForm($lecturer, 'PUT', route('admin.lecturers.update', $lecturer->id))->open() }}
 
                 {{--CARD HEADER --}}
                 <div class="card-header">
-                    Edit Dosen
+                    <strong><i class="fa fa-edit"></i>Edit Dosen</strong>
                 </div>
 
                 {{-- CARD BODY--}}
                 <div class="card-body">
-                    @include('backend.dosen._form')
+                    @include('backend.lecturers._form')
                 </div>
 
                 {{-- CARD FOOTER--}}
@@ -35,7 +35,8 @@
                     <input type="submit" class="btn btn-primary" value="Simpan"/>
                 </div>
 
-                {{ Form::close() }}
+                {{ html()->closeModelForm() }}
+
             </div>
         </div>
     </div>

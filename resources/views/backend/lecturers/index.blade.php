@@ -19,7 +19,7 @@
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    <strong>List Dosen</strong>
+                    <strong><i class="fa fa-list"></i> List Dosen</strong>
                 </div>
 
                 {{-- CARD BODY--}}
@@ -71,9 +71,6 @@
 
                 </div><!--card-body-->
 
-                {{-- CARD FOOTER--}}
-                <div class="card-footer">
-                </div>
 
             </div><!--card-->
         </div><!--col-->
