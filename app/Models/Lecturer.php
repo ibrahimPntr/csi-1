@@ -27,4 +27,5 @@ class Lecturer extends Model
     {
         return optional($this->user)->email;
     }
+
 }
