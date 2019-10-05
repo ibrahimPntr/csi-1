@@ -26,6 +26,7 @@ class AdminSeeder extends Seeder
 
         $manage_lecturers = Permission::create(['name' => 'manage_lecturers']);
         $manage_students = Permission::create(['name' => 'manage_students']);
+        $manage_staff = Permission::create(['name' => 'manage_staff']);
         $manage_users = Permission::create(['name' => 'manage_users']);
         $manage_proposalkp = Permission::create(['name' => 'manage_proposalkp']);
 
@@ -35,6 +36,7 @@ class AdminSeeder extends Seeder
 
         $adminRole->givePermissionTo($manage_lecturers);
         $adminRole->givePermissionTo($manage_students);
+        $adminRole->givePermissionTo($manage_staff);
         $adminRole->givePermissionTo($manage_users);
         $adminRole->givePermissionTo($manage_proposalkp);
 
