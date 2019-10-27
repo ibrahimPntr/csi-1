@@ -26,7 +26,7 @@ class LecturerController extends Controller
         $departments = Department::all();
         $genders = config('central.gender');
         $marital_statuses = config('central.marital_status');
-        $religions = config('central.religions');
+        $religions = config('central.religion');
         $association_types = config('central.lecturer_association');
         return view('backend.lecturers.create', compact(
             'departments',
@@ -57,7 +57,15 @@ class LecturerController extends Controller
             'name',
             'birthdate',
             'birthplace',
-            'phoneno'));
+            'phone',
+            'gender',
+            'karpeg',
+            'npwp',
+            'department_id',
+            'address',
+            'marital_status',
+            'religion',
+            'association_type'));
 
         session()->flash('flash_success', 'Berhasil menambahkan data dosen atas nama '. $request->input('name'));
         return redirect()->route('admin.lecturers.show', [$user->id]);
@@ -71,7 +79,19 @@ class LecturerController extends Controller
 
     public function edit(Lecturer $lecturer)
     {
-        return view('backend.lecturers.edit', compact('lecturer'));
+        $departments = Department::all();
+        $genders = config('central.gender');
+        $marital_statuses = config('central.marital_status');
+        $religions = config('central.religion');
+        $association_types = config('central.lecturer_association');
+        return view('backend.lecturers.edit', compact(
+            'lecturer',
+            'departments',
+            'genders',
+            'marital_statuses',
+            'religions',
+            'association_types'
+        ));
     }
 
     public function update(Request $request, Lecturer $lecturer)
@@ -83,9 +103,17 @@ class LecturerController extends Controller
             'nidn',
             'nik',
             'name',
-            'birthplace',
             'birthdate',
-            'phone'));
+            'birthplace',
+            'phone',
+            'gender',
+            'karpeg',
+            'npwp',
+            'department_id',
+            'address',
+            'marital_status',
+            'religion',
+            'association_type'));
 
         $lecturer->user->update([
             'password' => bcrypt('secret'),

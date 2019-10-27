@@ -1,7 +1,7 @@
 <!-- Name Text Field Input -->
 <div class="form-group">
     <label class="form-label" for="name">Nama</label>
-    {{ html()->text('name')->class(["form-control", "is-invalid" => $errors->has('name')])->id('name')->placeholder('Nama Dosen') }}
+    {{ html()->text('name')->class(["form-control", "is-invalid" => $errors->has('name')])->id('name')->placeholder('Nama Dosen Tanpa Gelar') }}
     @error('name')
     <div class="invalid-feedback">{{ $errors->first('name') }}</div>
     @enderror
@@ -17,10 +17,10 @@
 </div>
 
 <div class="form-group">
-    <label class="form-label" for="name">NIDN</label>
-    {{ html()->text('name')->class(["form-control", "is-invalid" => $errors->has('name')])->id('name')->placeholder('NIDN Dosen') }}
-    @error('name')
-    <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+    <label class="form-label" for="nidn">NIDN:</label>
+    {{ html()->text('nidn')->class(["form-control", "is-invalid" => $errors->has('nidn')])->id('nidn')->placeholder('Nomor Induk Dosen Nasional') }}
+    @error('nidn')
+    <div class="invalid-feedback">{{ $errors->first('nidn') }}</div>
     @enderror
 </div>
 
@@ -51,7 +51,7 @@
 <!-- Department Input (Select) -->
 <div class="form-group">
     <label class="form-label" for="department_id">Jurusan/Prodi:</label>
-    {{ html()->select('department_id')->options($departments)->class(["form-control", "is-invalid" => $errors->has('department_id')])->id('department_id')->placeholder('Jurusan / Program Studi') }}
+    {{ html()->select('department_id')->options($departments)->class(["form-control", "is-invalid" => $errors->has('department_id')])->id('department_id') }}
     @error('department_id')
     <div class="invalid-feedback">{{ $errors->first('department_id') }}</div>
     @enderror
@@ -71,7 +71,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label class="form-label" for="birthdate">Tanggal Lahir:</label>
-            {{ html()->text('birthdate')->class(["form-control", "is-invalid" => $errors->has('birthdate')])->id('birthdate')->placeholder('Tanggal Lahir') }}
+            {{ html()->date('birthdate')->class(["form-control", "is-invalid" => $errors->has('birthdate')])->id('birthdate')->placeholder('Tanggal Lahir') }}
             @error('birthdate')
             <div class="invalid-feedback">{{ $errors->first('birthdate') }}</div>
             @enderror
@@ -79,20 +79,39 @@
     </div>
 </div>
 
+<!-- Input (Select) gender-->
 <div class="form-group">
     <label class="form-label" for="gender">Jenis Kelamin:</label>
-    <div class="form-group">
-        <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="gender" name="gender" class="custom-control-input">
-            <label class="custom-control-label" for="customRadioInline1">Pria</label>
-        </div>
-        <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="gender" name="gender" class="custom-control-input">
-            <label class="custom-control-label" for="customRadioInline2">Wanita</label>
-        </div>
-    </div>
+    {{ html()->select('gender')->options($genders)->class(["form-control", "is-invalid" => $errors->has('gender')])->id('gender') }}
     @error('gender')
     <div class="invalid-feedback">{{ $errors->first('gender') }}</div>
+    @enderror
+</div>
+
+<!-- Religion Input (Select) -->
+<div class="form-group">
+    <label class="form-label" for="religion">Agama:</label>
+    {{ html()->select('religion', $religions)->class(["form-control", "is-invalid" => $errors->has('religion')])->id('religion') }}
+    @error('religion')
+    <div class="invalid-feedback">{{ $errors->first('religion') }}</div>
+    @enderror
+</div>
+
+<!-- Input (Select) marital_status -->
+<div class="form-group">
+    <label class="form-label" for="marital_status">Marital Status:</label>
+    {{ html()->select('marital_status')->options($marital_statuses)->class(["form-control", "is-invalid" => $errors->has('marital_status')])->id('marital_status') }}
+    @error('marital_status')
+    <div class="invalid-feedback">{{ $errors->first('marital_status') }}</div>
+    @enderror
+</div>
+
+<!-- Input (Select) association_type-->
+<div class="form-group">
+    <label class="form-label" for="association_type">Jenis Ikatan Kerja:</label>
+    {{ html()->select('association_type')->options($association_types)->class(["form-control", "is-invalid" => $errors->has('association_type')])->id('association_type')->placeholder('') }}
+    @error('association_type')
+    <div class="invalid-feedback">{{ $errors->first('association_type') }}</div>
     @enderror
 </div>
 
@@ -109,6 +128,14 @@
     {{ html()->text('phone')->class(["form-control", "is-invalid" => $errors->has('phone')])->id('phone')->placeholder('No Handphone Dosen') }}
     @error('phone')
     <div class="invalid-feedback">{{ $errors->first('phone') }}</div>
+    @enderror
+</div>
+
+<div class="form-group">
+    <label class="form-label" for="address">Alamat:</label>
+    {{ html()->textarea('address')->class(["form-control", "is-invalid" => $errors->has('address')])->id('address') }}
+    @error('address')
+    <div class="invalid-feedback">{{ $errors->first('address') }}</div>
     @enderror
 </div>
 
