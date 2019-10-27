@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\Lecturer;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,7 +23,18 @@ class LecturerController extends Controller
 
     public function create()
     {
-        return view('backend.lecturers.create');
+        $departments = Department::all();
+        $genders = config('central.gender');
+        $marital_statuses = config('central.marital_status');
+        $religions = config('central.religions');
+        $association_types = config('central.lecturer_association');
+        return view('backend.lecturers.create', compact(
+            'departments',
+            'genders',
+            'marital_statuses',
+            'religions',
+            'association_types'
+        ));
     }
 
 

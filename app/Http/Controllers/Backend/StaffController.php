@@ -56,7 +56,7 @@ class StaffController extends Controller
 
     public function show(Staff $staff)
     {
-        return view('backend.staff.show', compact('tendik'));
+        return view('backend.staff.show', compact('staff'));
     }
 
     public function edit(Staff $staff)

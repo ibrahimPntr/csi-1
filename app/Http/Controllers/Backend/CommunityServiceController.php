@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\LecturerResearch;
+use App\CommunityService;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LecturerResearchController extends Controller
+class CommunityServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class LecturerResearchController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\LecturerResearch  $lecturerResearch
+     * @param  \App\CommunityService  $communityService
      * @return \Illuminate\Http\Response
      */
-    public function show(LecturerResearch $lecturerResearch)
+    public function show(CommunityService $communityService)
     {
         //
     }
@@ -52,10 +53,10 @@ class LecturerResearchController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\LecturerResearch  $lecturerResearch
+     * @param  \App\CommunityService  $communityService
      * @return \Illuminate\Http\Response
      */
-    public function edit(LecturerResearch $lecturerResearch)
+    public function edit(CommunityService $communityService)
     {
         //
     }
@@ -64,10 +65,10 @@ class LecturerResearchController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\LecturerResearch  $lecturerResearch
+     * @param  \App\CommunityService  $communityService
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LecturerResearch $lecturerResearch)
+    public function update(Request $request, CommunityService $communityService)
     {
         //
     }
@@ -75,10 +76,10 @@ class LecturerResearchController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\LecturerResearch  $lecturerResearch
+     * @param  \App\CommunityService  $communityService
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LecturerResearch $lecturerResearch)
+    public function destroy(CommunityService $communityService)
     {
         //
     }

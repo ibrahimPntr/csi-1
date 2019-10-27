@@ -5,6 +5,8 @@ return [
 
     'folder' => [
         'staff_photo' => 'public/photo/tendik',
+        'lecturer_photo' => 'public/photo/lecturer',
+        'student_photo' => 'public/photo/student',
         'ijazah' => 'public/ijazah',
     ],
 
@@ -55,6 +57,11 @@ return [
     'domestic' => [
         0 => 'Dalam Negri',
         1 => 'Luar Negri'
+    ],
+
+    'research_position' => [
+        1 => 'Ketua',
+        2 => 'Anggota'
     ],
 
     'education_level' => [

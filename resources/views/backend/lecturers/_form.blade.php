@@ -1,11 +1,13 @@
+<!-- Name Text Field Input -->
 <div class="form-group">
-    <label class="form-label" for="nama">Nama</label>
+    <label class="form-label" for="name">Nama</label>
     {{ html()->text('name')->class(["form-control", "is-invalid" => $errors->has('name')])->id('name')->placeholder('Nama Dosen') }}
     @error('name')
     <div class="invalid-feedback">{{ $errors->first('name') }}</div>
     @enderror
 </div>
 
+<!-- NIP Text Field Input -->
 <div class="form-group">
     <label class="form-label" for="nip">NIP</label>
     {{ html()->text('nip')->class(['form-control', 'is-invalid' => $errors->has('nip')])->id('nip')->placeholder('NIP Dosen') }}
@@ -30,6 +32,31 @@
     @enderror
 </div>
 
+<div class="form-group">
+    <label class="form-label" for="karpeg">Karpeg:</label>
+    {{ html()->text('karpeg')->class(["form-control", "is-invalid" => $errors->has('karpeg')])->id('karpeg')->placeholder('Nomor Kartu Pegawai Dosen') }}
+    @error('karpeg')
+    <div class="invalid-feedback">{{ $errors->first('karpeg') }}</div>
+    @enderror
+</div>
+
+<div class="form-group">
+    <label class="form-label" for="npwp">NPWP:</label>
+    {{ html()->text('npwp')->class(["form-control", "is-invalid" => $errors->has('npwp')])->id('npwp')->placeholder('Nomor Pokok Wajib Pajak') }}
+    @error('npwp')
+    <div class="invalid-feedback">{{ $errors->first('npwp') }}</div>
+    @enderror
+</div>
+
+<!-- Department Input (Select) -->
+<div class="form-group">
+    <label class="form-label" for="department_id">Jurusan/Prodi:</label>
+    {{ html()->select('department_id')->options($departments)->class(["form-control", "is-invalid" => $errors->has('department_id')])->id('department_id')->placeholder('Jurusan / Program Studi') }}
+    @error('department_id')
+    <div class="invalid-feedback">{{ $errors->first('department_id') }}</div>
+    @enderror
+</div>
+
 <div class="row">
     <div class="col-md-6">
         <div class="form-group">
@@ -50,6 +77,23 @@
             @enderror
         </div>
     </div>
+</div>
+
+<div class="form-group">
+    <label class="form-label" for="gender">Jenis Kelamin:</label>
+    <div class="form-group">
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="gender" name="gender" class="custom-control-input">
+            <label class="custom-control-label" for="customRadioInline1">Pria</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="gender" name="gender" class="custom-control-input">
+            <label class="custom-control-label" for="customRadioInline2">Wanita</label>
+        </div>
+    </div>
+    @error('gender')
+    <div class="invalid-feedback">{{ $errors->first('gender') }}</div>
+    @enderror
 </div>
 
 <div class="form-group">

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Research;
+use App\Faculty;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ResearchController extends Controller
+class FacultyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class ResearchController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Research  $research
+     * @param  \App\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function show(Research $research)
+    public function show(Faculty $faculty)
     {
         //
     }
@@ -52,10 +53,10 @@ class ResearchController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Research  $research
+     * @param  \App\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function edit(Research $research)
+    public function edit(Faculty $faculty)
     {
         //
     }
@@ -64,10 +65,10 @@ class ResearchController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Research  $research
+     * @param  \App\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Research $research)
+    public function update(Request $request, Faculty $faculty)
     {
         //
     }
@@ -75,10 +76,10 @@ class ResearchController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Research  $research
+     * @param  \App\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Research $research)
+    public function destroy(Faculty $faculty)
     {
         //
     }

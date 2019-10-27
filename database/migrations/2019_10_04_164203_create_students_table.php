@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('nim')->unique();
             $table->string('name');
             $table->integer('year')->nullable();
-            $table->bigInteger('department_id')->nullable();
+            $table->unsignedBigInteger('department_id')->nullable();
             $table->integer('gender')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('birthplace')->nullable();
