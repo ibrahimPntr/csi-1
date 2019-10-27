@@ -18,14 +18,19 @@ class CreateStudentsTable extends Migration
             $table->string('nim')->unique();
             $table->string('name');
             $table->integer('year')->nullable();
+            $table->bigInteger('department_id')->nullable();
+            $table->integer('gender')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('birthplace')->nullable();
+            $table->text('address')->nullable();
+            $table->bigInteger('marital_status')->nullable();
             $table->string('phone')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
 
             $table->primary('id');
             $table->foreign('id')->references('id')->on('users');
+            $table->foreign('department_id')->references('id')->on('departments');
         });
     }
 

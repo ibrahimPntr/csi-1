@@ -11,6 +11,8 @@ class Lecturer extends Model
         'nidn' => 'required',
         'name' => 'required',
         'nik'  => 'required',
+        'birthdate' => 'required',
+        'birthplace' => 'required'
     ];
 
     protected $guarded=[];

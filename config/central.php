@@ -22,6 +22,31 @@ return [
         2 => 'Wanita',
     ],
 
+    'marital_status' => [
+        1 => 'Belum Menikah',
+        2 => 'Menikah',
+        3 => 'Janda/Duda'
+    ],
+
+    'religion' => [
+        1 => 'Islam',
+        2 => 'Kristen Protestan',
+        3 => 'Kristen Katolik',
+        4 => 'Hindu',
+        5 => 'Budha'
+    ],
+
+    'lecturer_association' => [
+        1 => 'Dosen Tetap PNS',
+        2 => 'Dosen Tetap Non PNS',
+        3 => 'Dosen Luar Biasa'
+    ],
+
+    'employee_association' => [
+        1 => 'Karyawan Tetap PNS',
+        2 => 'Karyawan Tetap Non PNS'
+    ],
+
     'alive_status' => [
         0 => 'Meninggal',
         1 => 'Masih Hidup'
