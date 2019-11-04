@@ -70,10 +70,10 @@
 
     <div class="col-md-6">
         <div class="form-group">
-            <label class="form-label" for="birthdate">Tanggal Lahir:</label>
-            {{ html()->date('birthdate')->class(["form-control", "is-invalid" => $errors->has('birthdate')])->id('birthdate')->placeholder('Tanggal Lahir') }}
-            @error('birthdate')
-            <div class="invalid-feedback">{{ $errors->first('birthdate') }}</div>
+            <label class="form-label" for="birthday">Tanggal Lahir:</label>
+            {{ html()->date('birthday')->class(["form-control", "is-invalid" => $errors->has('birthday')])->id('birthday')->placeholder('Tanggal Lahir') }}
+            @error('birthday')
+            <div class="invalid-feedback">{{ $errors->first('birthday') }}</div>
             @enderror
         </div>
     </div>
@@ -136,6 +136,14 @@
     {{ html()->textarea('address')->class(["form-control", "is-invalid" => $errors->has('address')])->id('address') }}
     @error('address')
     <div class="invalid-feedback">{{ $errors->first('address') }}</div>
+    @enderror
+</div>
+
+<div class="form-group">
+    <label class="form-label" for="photo">Photo:</label>
+    {{ html()->file('photo')->class(["form-control-file", "is-invalid" => $errors->has('photo')])->id('photo') }}
+    @error('photo')
+    <div class="invalid-feedback">{{ $errors->first('photo') }}</div>
     @enderror
 </div>
 

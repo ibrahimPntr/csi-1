@@ -15,29 +15,50 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
+        <div class="col">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
 
-                {{ html()->modelForm($lecturer, 'PUT', route('admin.lecturers.update', $lecturer->id))->open() }}
+                        {{ html()->modelForm($lecturer, 'PUT', route('admin.lecturers.update', $lecturer->id))->acceptsFiles()->open() }}
 
-                {{--CARD HEADER --}}
-                <div class="card-header">
-                    <strong><i class="fa fa-edit"></i>Edit Dosen</strong>
+                        {{--CARD HEADER --}}
+                        <div class="card-header">
+                            <strong><i class="fa fa-edit"></i>Edit Dosen</strong>
+                        </div>
+
+                        {{-- CARD BODY--}}
+                        <div class="card-body">
+                            @include('backend.lecturers._form')
+                        </div>
+
+                        {{-- CARD FOOTER--}}
+                        <div class="card-footer">
+                            <input type="submit" class="btn btn-primary" value="Simpan"/>
+                        </div>
+
+                        {{ html()->closeModelForm() }}
+                    </div>
                 </div>
 
-                {{-- CARD BODY--}}
-                <div class="card-body">
-                    @include('backend.lecturers._form')
-                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        {{-- CARD HEADER--}}
+                        <div class="card-header">
+                            <i class="fa fa-edit"></i> <strong>Foto Dosen</strong>
+                        </div>
 
-                {{-- CARD FOOTER--}}
-                <div class="card-footer">
-                    <input type="submit" class="btn btn-primary" value="Simpan"/>
+                        {{-- CARD BODY--}}
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img src="{{ asset($lecturer->getPhotoPath()) }}" class="img-fluid rounded" alt="...">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                {{ html()->closeModelForm() }}
 
             </div>
+
         </div>
     </div>
 @endsection

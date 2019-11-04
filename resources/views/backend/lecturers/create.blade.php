@@ -19,7 +19,7 @@
                 <div class="col-md-8">
                     <div class="card">
 
-                        {{ html()->form('POST', route('admin.lecturers.store'))->open() }}
+                        {{ html()->form('POST', route('admin.lecturers.store'))->acceptsFiles()->open() }}
 
                         {{-- CARD HEADER--}}
                         <div class="card-header">
@@ -39,6 +39,7 @@
                         {{ html()->form()->close() }}
                     </div>
                 </div>
+
             </div>
 
         </div>

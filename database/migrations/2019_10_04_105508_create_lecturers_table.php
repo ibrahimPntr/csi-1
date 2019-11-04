@@ -22,7 +22,7 @@ class CreateLecturersTable extends Migration
             $table->string('karpeg')->nullable();
             $table->string('npwp')->nullable();
             $table->integer('gender')->nullable(); //code: config/central/gender
-            $table->date('birthdate')->nullable();
+            $table->date('birthday')->nullable();
             $table->string('birthplace')->nullable();
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
