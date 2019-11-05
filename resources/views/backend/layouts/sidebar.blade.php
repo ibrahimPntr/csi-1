@@ -16,10 +16,23 @@
                     {{-- Menu Dosen--}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.lecturers.index') }}">
-                            <i class="nav-icon"></i>Dosen
+                            <i class="nav-icon"></i> Dosen
                         </a>
                     </li>
 
+                    {{-- Menu Mahasiswa --}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.students.index') }}">
+                            <i class="nav-icon"></i> Mahasiswa
+                        </a>
+                    </li>
+
+                    {{-- Menu Tendik --}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.staff.index') }}">
+                            <i class="nav-icon"></i> Tendik
+                        </a>
+                    </li>
 
                 </ul>
             </li>

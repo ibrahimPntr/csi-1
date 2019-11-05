@@ -67,7 +67,7 @@
 
         <div class="container-fluid">
 
-            @include('errors.validation')
+{{--            @include('errors.validation')--}}
 
             <div class="animated fadeIn">
                 @yield('content')

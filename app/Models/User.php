@@ -56,4 +56,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Staff::class, 'id');
     }
+
+    public function families()
+    {
+        return $this->hasMany(FamilyMember::class, 'id', 'user_id');
+    }
+
+    public function educations()
+    {
+        return $this->hasMany(UserEducation::class, 'id', 'user_id');
+    }
 }
