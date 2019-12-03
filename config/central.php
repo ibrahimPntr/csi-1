@@ -10,6 +10,11 @@ return [
         'ijazah' => 'public/ijazah',
     ],
 
+    'position' => [
+        1 => 'Ketua',
+        2 => 'Anggota',
+    ],
+
    'family_relationship' => [
        1 => 'Suami/Istri',
        2 => 'Ayah/Ibu',

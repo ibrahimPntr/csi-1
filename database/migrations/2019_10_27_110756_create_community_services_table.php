@@ -18,7 +18,7 @@ class CreateCommunityServicesTable extends Migration
             $table->string('title');
             $table->unsignedBigInteger('community_service_schema_id');
             $table->string('partner')->nullable();
-            $table->date('start_at')->nullable();
+            $table->integer('start_at')->nullable();
             $table->integer('fund_amount')->nullable();
             $table->string('proposal_file')->nullable();
             $table->string('report_file')->nullable();

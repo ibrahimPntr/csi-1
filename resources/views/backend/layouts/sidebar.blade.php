@@ -37,6 +37,42 @@
                 </ul>
             </li>
 
+            {{-- Menu Penelitian--}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.researches.index') }}">
+                    <i class="nav-icon icon-doc"></i> Penelitian
+                </a>
+            </li>
+
+            {{-- Menu Pengabdian--}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.community_services.index') }}">
+                    <i class="nav-icon icon-directions"></i> Pengabdian
+                </a>
+            </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-doc"></i> Laporan</a>
+                <ul class="nav-dropdown-items">
+
+                    {{-- Penelitian--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.researches.report') }}">
+                            <i class="nav-icon"></i> Penelitian
+                        </a>
+                    </li>
+
+                    {{-- Pengabdian --}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.community_services.report') }}">
+                            <i class="nav-icon"></i> Pengabdian
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
 
         </ul>
     </nav>

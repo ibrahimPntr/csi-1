@@ -22,3 +22,10 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.'], 
 
     require(__DIR__ . '/backend/master.php');
 });
+
+Route::group(['namespace' => 'Other'], function(){
+
+    Route::get('home', 'HomeController@index')->name('home');
+
+    require(__DIR__ . '/backend/other.php');
+});
