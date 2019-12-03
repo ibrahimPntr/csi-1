@@ -3,7 +3,7 @@
 /** Routing Pengelolaan Dosen */
 Route::resource('lecturers', 'LecturerController');
 Route::resource('students', 'StudentController');
-Route::resource('staff', 'StaffController');
+Route::resource('staffs', 'StaffController');
 
 /** User Family Management */
 //Route::get('user-family/{user}', 'FamilyMemberController@index')->name('user-family.index');
