@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,13 +18,24 @@ class StaffController extends Controller
 
     public function index()
     {
-        $staffs = Staff::paginage('25');
-        return view('backend.staff.index', compact('staffs'));
+        $staffs = Staff::paginate(25);
+        return view('backend.staffs.index', compact('staffs'));
     }
 
     public function create()
     {
-        return view('backend.staff.create');
+        $departments = Department::all();
+        $genders = config('central.gender');
+        $marital_statuses = config('central.marital_status');
+        $religions = config('central.religion');
+        $association_types = config('central.employee_association');
+        return view('backend.staffs.create', compact(
+            'departments',
+            'genders',
+            'marital_statuses',
+            'religions',
+            'association_types'
+        ));
     }
 
     public function store(Request $request)
@@ -51,22 +63,63 @@ class StaffController extends Controller
         $user->staff()->create($data);
 
         session()->flash('flash_success', 'Berhasil menambahkan data tendik atas nama '. $request->input('name'));
-        return redirect()->route('admin.staff.show', [$user->id]);
+        return redirect()->route('admin.staffs.show', [$user->id]);
     }
 
     public function show(Staff $staff)
     {
-        return view('backend.staff.show', compact('staff'));
+        $departments = Department::all();
+        $genders = config('central.gender');
+        $marital_statuses = config('central.marital_status');
+        $religions = config('central.religion');
+        $association_types = config('central.employee_association');
+        return view('backend.staffs.show', compact(
+            'staff',
+            'departments',
+            'genders',
+            'marital_statuses',
+            'religions',
+            'association_types'
+        ));
     }
 
     public function edit(Staff $staff)
     {
-        return view('backend.staff.edit', compact('staff'));
+        $departments = Department::all();
+        $genders = config('central.gender');
+        $marital_statuses = config('central.marital_status');
+        $religions = config('central.religion');
+        $association_types = config('central.employee_association');
+        return view('backend.staffs.edit', compact(
+            'staff',
+            'departments',
+            'genders',
+            'marital_statuses',
+            'religions',
+            'association_types'
+        ));
     }
 
     public function update(Request $request, Staff $staff)
     {
+        // dd('tes');
         $this->validate($request, Staff::$validation_rules);
+
+        $staff->update($request->only(
+            'nip',
+            'nik',
+            'name',
+            'birthday',
+            'birthplace',
+            'phone',
+            'gender',
+            'karpeg',
+            'npwp',
+            'department_id',
+            'address',
+            'marital_status',
+            'religion',
+            'association_type'));
 
         $staff->user->update([
             'password' => bcrypt('secret'),
@@ -74,22 +127,20 @@ class StaffController extends Controller
             'status' => 1,
         ]);
 
-        if ($request->file('photo')->isValid()) {
-
-            Storage::disk('public')->delete(config('central.folder.staff_photo').$staff->photo);
-
-            $filename = uniqid('staff-');
-            $fileext = $request->file('photo')->extension();
-            $filenameext = $filename.'.'.$fileext;
-
-            $filepath = $request->photo->storeAs(config('central.folder.staff_photo'), $filenameext);
+        if($request->hasFile('photo')){
+            $oldFile = $staff->photo;
+            $fileExt = $request->photo->extension();
+            $fileName = uniqid("photo").".".$fileExt;
+            $request->photo->storeAs(
+                config('central.folder.staff_photo'), $fileName
+            );
+            $staff->photo = $fileName;
+            $staff->save();
+            Storage::delete(config('central.folder.staff_photo').'/'.$oldFile);
         }
-        $data=$request->except('photo', 'email');
-        $data['photo'] = $filenameext;
-        $staff->update($data);
 
         session()->flash('flash_success', 'Berhasil mengupdate data tendik '.$staff->name);
-        return redirect()->route('admin.staff.show', [$staff->id]);
+        return redirect()->route('admin.staffs.show', [$staff->id]);
 
     }
 
@@ -101,6 +152,6 @@ class StaffController extends Controller
         optional($user)->delete();
 
         session()->flash('flash_success', 'Berhasil menghapus tendik '.$staff->name);
-        return redirect()->route('admin.staff.index');
+        return redirect()->route('admin.staffs.index');
     }
 }

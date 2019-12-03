@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,7 +24,14 @@ class StudentController extends Controller
 
     public function create()
     {
-        return view('backend.students.create');
+        $departments = Department::pluck('name','id');
+        $genders = config('central.gender');
+        $marital_statuses = config('central.marital_status');
+        return view('backend.students.create', compact(
+            'departments',
+            'genders',
+            'marital_statuses'
+        ));
     }
 
     public function store(Request $request)
@@ -44,7 +52,22 @@ class StudentController extends Controller
             'year',
             'birthdate',
             'birthplace',
-            'phone'));
+            'phone',
+            'gender',
+            'department_id',
+            'address',
+            'marital_status'));
+        
+        if($request->hasFile('photo')){
+            $fileExt = $request->photo->extension();
+            $fileName = uniqid("photo").".".$fileExt;
+            $request->photo->storeAs(
+                config('central.folder.student_photo'), $fileName
+            );
+            $student = $user->student;
+            $student->photo = $fileName;
+            $student->save();
+        }
 
         session()->flash('flash_success', 'Berhasil menambah data mahasiswa atas nama '. $request->input('name'));
         return redirect()->route('admin.students.show', [$user->id]);
@@ -52,12 +75,28 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
-        return view('backend.students.show', compact('student'));
+        $departments = Department::all();
+        $genders = config('central.gender');
+        $marital_statuses = config('central.marital_status');
+        return view('backend.students.show', compact(
+            'student',
+            'departments',
+            'genders',
+            'marital_statuses'
+        ));
     }
 
     public function edit(Student $student)
     {
-        return view('backend.students.edit', compact('student'));
+        $departments = Department::all();
+        $genders = config('central.gender');
+        $marital_statuses = config('central.marital_status');
+        return view('backend.students.edit', compact(
+            'student',
+            'departments',
+            'genders',
+            'marital_statuses'
+        ));
     }
 
     public function update(Request $request, Student $student)
@@ -70,14 +109,29 @@ class StudentController extends Controller
             'year',
             'birthdate',
             'birthplace',
-            'phone'
-        ));
+            'phone',
+            'gender',
+            'department_id',
+            'address',
+            'marital_status'));
 
         $student->user->update([
             'password' => bcrypt('secret'),
             'email' => request('email'),
             'status' => 1,
         ]);
+
+        if($request->hasFile('photo')){
+            $oldFile = $student->photo;
+            $fileExt = $request->photo->extension();
+            $fileName = uniqid("photo").".".$fileExt;
+            $request->photo->storeAs(
+                config('central.folder.student_photo'), $fileName
+            );
+            $student->photo = $fileName;
+            $student->save();
+            Storage::delete(config('central.folder.student_photo').'/'.$oldFile);
+        }
 
         session()->flash('flash_success', 'Berhasil mengupdate data mahasiswa '.$student->name);
         return redirect()->route('admin.students.show', [$student->id]);

@@ -3,7 +3,7 @@
 /** Routing Pengelolaan Dosen */
 Route::resource('lecturers', 'LecturerController');
 Route::resource('students', 'StudentController');
-Route::resource('staff', 'StaffController');
+Route::resource('staffs', 'StaffController');
 
 /** Routing Pengelolaan Penelitian */
 Route::resource('researches','ResearchController');
