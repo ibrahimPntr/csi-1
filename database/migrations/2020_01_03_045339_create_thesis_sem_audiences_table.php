@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudentAchievementsTable extends Migration
+class CreateThesisSemAudiencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateStudentAchievementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('student_achievements', function (Blueprint $table) {
+        Schema::create('thesis_sem_audiences', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('thesis_seminar_id');
             $table->unsignedBigInteger('student_id');
-            $table->string('title');
-            $table->string('event');
-            $table->integer('level');
-            $table->string('file_certificate')->nullable();
-            $table->string('url')->nullable();
             $table->timestamps();
 
+            $table->foreign('thesis_seminar_id')->references('id')->on('thesis_seminars');
             $table->foreign('student_id')->references('id')->on('students');
         });
     }
@@ -34,6 +31,6 @@ class CreateStudentAchievementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_achievements');
+        Schema::dropIfExists('thesis_sem_audiences');
     }
 }

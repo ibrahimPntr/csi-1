@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLecturerFunctionalsTable extends Migration
+class CreateThesisSupervisorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateLecturerFunctionalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lecturer_functionals', function (Blueprint $table) {
+        Schema::create('thesis_supervisors', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('thesis_id');
             $table->unsignedBigInteger('lecturer_id');
-            $table->unsignedBigInteger('functional_id');
-            $table->date('start_date_at');
-            $table->string('decree_file')->nullable();
+            $table->integer('position')->default(0);
             $table->timestamps();
 
+            $table->foreign('thesis_id')->references('id')->on('theses');
             $table->foreign('lecturer_id')->references('id')->on('lecturers');
-            $table->foreign('functional_id')->references('id')->on('functional_references');
         });
     }
 
@@ -33,6 +32,6 @@ class CreateLecturerFunctionalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lecturer_functionals');
+        Schema::dropIfExists('thesis_supervisors');
     }
 }
