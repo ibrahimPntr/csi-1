@@ -53,7 +53,7 @@
                                 <td class="text-center">
                                     {!! cui_btn_view(route('admin.theses.show', [$thesis->id])) !!}
                                     {!! cui_btn_edit(route('admin.theses.edit', [$thesis->id])) !!}
-                                    {!! cui_btn_delete(route('admin.theses.destroy', [$thesis->id]), "Anda yakin akan menghapus data dosen ini?") !!}
+                                    {!! cui_btn_delete(route('admin.theses.destroy', [$thesis->id]), "Anda yakin akan menghapus data tugas akhir ini?") !!}
                                 </td>
                             </tr>
                         @endforeach

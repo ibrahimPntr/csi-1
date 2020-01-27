@@ -76,5 +76,11 @@ return [
         9 => 'S1',
         10 => 'S2',
         11 => 'S3'
+    ],
+
+    'thesis_supervisor' => [
+        0 => 'submitted',
+        1 => 'accepted',
+        2 => 'rejected'
     ]
 ];

@@ -3,14 +3,14 @@
 @section('breadcrumb')
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
-        'Dosen' => route('admin.lecturers.index'),
+        'Tugas Akhir' => route('admin.theses.index'),
         'Edit' => '#'
     ]) !!}
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn(route('admin.lecturers.create'), 'icon-plus', 'Tambah Dosen') !!}
-    {!! cui_toolbar_btn(route('admin.lecturers.index'), 'icon-list', 'List Dosen') !!}
+    {!! cui_toolbar_btn(route('admin.theses.create'), 'icon-plus', 'Tambah Tugas Akhir') !!}
+    {!! cui_toolbar_btn(route('admin.theses.index'), 'icon-list', 'List Tugas Akhir') !!}
 @endsection
 
 @section('content')
@@ -20,16 +20,16 @@
                 <div class="col-md-8">
                     <div class="card">
 
-                        {{ html()->modelForm($lecturer, 'PUT', route('admin.lecturers.update', $lecturer->id))->acceptsFiles()->open() }}
+                        {{ html()->modelForm($thesis, 'PUT', route('admin.theses.update', $thesis->id))->open() }}
 
                         {{--CARD HEADER --}}
                         <div class="card-header">
-                            <strong><i class="fa fa-edit"></i>Edit Dosen</strong>
+                            <strong><i class="fa fa-edit"></i>Edit Tugas Akhir</strong>
                         </div>
 
                         {{-- CARD BODY--}}
                         <div class="card-body">
-                            @include('backend.lecturers._form')
+                            @include('backend.theses._form')
                         </div>
 
                         {{-- CARD FOOTER--}}
@@ -40,23 +40,6 @@
                         {{ html()->closeModelForm() }}
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="card">
-                        {{-- CARD HEADER--}}
-                        <div class="card-header">
-                            <i class="fa fa-edit"></i> <strong>Foto Dosen</strong>
-                        </div>
-
-                        {{-- CARD BODY--}}
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img src="{{ asset($lecturer->getPhotoPath()) }}" class="img-fluid rounded" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
         </div>

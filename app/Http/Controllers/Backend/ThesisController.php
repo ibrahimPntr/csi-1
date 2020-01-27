@@ -41,7 +41,12 @@ class ThesisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, Thesis::$validation_rules);
+        $thesis = Thesis::create($request->all());
+
+        session()->flash('flash_success', 'Berhasil menambahkan data tugas akhir atas nama '. $thesis->student->name);
+        return redirect()->route('admin.theses.show', [$thesis->id]);
+
     }
 
     /**
@@ -52,7 +57,9 @@ class ThesisController extends Controller
      */
     public function show(Thesis $thesis)
     {
-        //
+        $thesis->status = Thesis::$status[$thesis->status];
+//        dd($thesis->supervisor[0]);
+        return view('backend.theses.show',compact('thesis'));
     }
 
     /**
@@ -63,7 +70,9 @@ class ThesisController extends Controller
      */
     public function edit(Thesis $thesis)
     {
-        //
+        $thesesTopic = ThesisTopic::pluck('name','id');
+        $students = Student::pluck('name','id');
+        return view('backend.theses.edit',compact('thesis','thesesTopic','students'));
     }
 
     /**
@@ -75,7 +84,11 @@ class ThesisController extends Controller
      */
     public function update(Request $request, Thesis $thesis)
     {
-        //
+        $this->validate($request, Thesis::$validation_rules);
+        $thesis->update($request->all());
+
+        session()->flash('flash_success', 'Berhasil mengupdate data Tugas akhir atas nama '.$thesis->student->name);
+        return redirect()->route('admin.theses.show', [$thesis->id]);
     }
 
     /**
@@ -86,6 +99,8 @@ class ThesisController extends Controller
      */
     public function destroy(Thesis $thesis)
     {
-        //
+        $thesis->delete();
+        session()->flash('flash_success', "Berhasil menghapus Tugas Akhir ".$thesis->title);
+        return redirect()->route('admin.theses.index');
     }
 }
