@@ -34,6 +34,13 @@
                         </a>
                     </li>
 
+                    {{-- Menu Tendik --}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.theses.index') }}">
+                            <i class="nav-icon"></i> Tugas Akhir
+                        </a>
+                    </li>
+
                 </ul>
             </li>
 

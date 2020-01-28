@@ -8,6 +8,7 @@ return [
         'lecturer_photo' => 'public/photo/lecturer',
         'student_photo' => 'public/photo/student',
         'ijazah' => 'public/ijazah',
+        'thesis_logbook_file_progress' => 'public/logbook/thesis'
     ],
 
    'family_relationship' => [
@@ -76,5 +77,11 @@ return [
         9 => 'S1',
         10 => 'S2',
         11 => 'S3'
+    ],
+
+    'thesis_supervisor' => [
+        0 => 'submitted',
+        1 => 'accepted',
+        2 => 'rejected'
     ]
 ];
