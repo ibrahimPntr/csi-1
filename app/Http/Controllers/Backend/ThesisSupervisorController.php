@@ -20,7 +20,7 @@ class ThesisSupervisorController extends Controller
     public function store(Request $request)
     {
         $thesis = Thesis::find($request->get('thesis_id'));
-        $thesis->supervisor()->attach($request->get('lecturer_id'),['position' => 0]);
+        $thesis->supervisor()->attach($request->get('lecturer_id'),['position' => $request->get('position')]);
         session()->flash('flash_success', "Berhasil menambahkan pembimbing Tugas Akhir ".$thesis->title);
         return redirect()->route('admin.theses.show',[$thesis->id]);
     }

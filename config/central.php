@@ -8,6 +8,7 @@ return [
         'lecturer_photo' => 'public/photo/lecturer',
         'student_photo' => 'public/photo/student',
         'ijazah' => 'public/ijazah',
+        'thesis_logbook_file_progress' => 'public/logbook/thesis'
     ],
 
    'family_relationship' => [

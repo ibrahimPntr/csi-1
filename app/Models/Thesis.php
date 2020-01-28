@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thesis extends Model
 {
-    public static $validation_rules = [
-        'thesis_id' =>'required',
-        'student_id' => 'required',
-        'title' => 'required',
-        'abstract'  => 'required',
-        'start_at' => 'required',
-        'status' => 'required'
-    ];
+        public static $validation_rules = [
+            'thesis_id' =>'required',
+            'student_id' => 'required',
+            'title' => 'required',
+            'abstract'  => 'required',
+            'start_at' => 'required',
+            'status' => 'required'
+        ];
 
         public static $status = [
             0 => 'Pengajuan',
@@ -27,7 +27,7 @@ class Thesis extends Model
             35 => 'Batal TA/Tidak Selesai'
         ];
 
-    protected $dates = ['start_at'];
+        protected $dates = ['start_at'];
 
         protected $fillable = [
             'thesis_id',

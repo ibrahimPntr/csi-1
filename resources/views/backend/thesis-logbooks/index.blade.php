@@ -28,7 +28,7 @@
                     <div class="row justify-content-end">
                         <div class="col-md-6 justify-content-end">
                             <div class="row justify-content-end">
-                                {{ $theses->links() }}
+                                {{ $thesisLogbooks->links() }}
                             </div>
                         </div>
                     </div>
@@ -36,24 +36,22 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th class="text-center">Topik</th>
-                            <th class="text-center">Nama Mahasiswa</th>
-                            <th class="text-center">Judul</th>
+                            <th class="text-center">Tanggal</th>
+                            <th class="text-center">Progress</th>
+                            <th class="text-center">Progress File</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($theses as $thesis)
+                        @foreach($thesisLogbooks as $thesisLogbook)
                             <tr>
-                                <td>{{ $thesis->thesisTopic->name }}</td>
-                                <td class="text-center">{{ $thesis->student->name }}</td>
-                                <td class="text-center">{{ $thesis->title }}</td>
-                                <td class="text-center">{{ $thesis->status }}</td>
+                                <td>{{ $thesisLogbook->date->format('d M Y') }}</td>
+                                <td class="text-center">{{ $thesisLogbook->progress }}</td>
+                                <td class="text-center">{{ $thesisLogbook->files_progress }}</td>
+                                <td class="text-center">{{ $thesisLogbook->status }}</td>
                                 <td class="text-center">
-                                    {!! cui_btn_view(route('admin.theses.show', [$thesis->id])) !!}
-                                    {!! cui_btn_edit(route('admin.theses.edit', [$thesis->id])) !!}
-                                    {!! cui_btn_delete(route('admin.theses.destroy', [$thesis->id]), "Anda yakin akan menghapus data tugas akhir ini?") !!}
+                                    {!! cui_btn_delete(route('admin.thesis-logbooks.destroy', [$thesis_id,$thesisLogbook->id]), "Anda yakin akan menghapus data logbook TA ini?") !!}
                                 </td>
                             </tr>
                         @endforeach
@@ -66,7 +64,7 @@
                         </div>
                         <div class="col-md-6 justify-content-end">
                             <div class="row justify-content-end">
-                                {{ $theses->links() }}
+                                {{ $thesisLogbooks->links() }}
                             </div>
                         </div>
                     </div>

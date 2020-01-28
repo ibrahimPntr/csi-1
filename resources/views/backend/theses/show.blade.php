@@ -55,7 +55,7 @@
                             {{-- CARD BODY--}}
                             <div class="card-body">
                                 <div class="text-center">
-                                    <a href="{!! route('admin.thesis-supervisors.create',[$thesis->id]) !!}" class="col-12 btn btn-outline-primary">Logbook</a>
+                                    <a href="{!! route('admin.thesis-logbooks.index',[$thesis->id]) !!}" class="col-12 btn btn-outline-primary">Logbook</a>
                                 </div>
                             </div>
                         </div>

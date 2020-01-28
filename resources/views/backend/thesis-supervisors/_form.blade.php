@@ -8,4 +8,12 @@
     @enderror
 </div>
 
+<div class="form-group">
+    <label class="form-label" for="position">Topik:</label>
+    {{ html()->select('position',config('central.thesis_supervisor'))->class(["form-control", "is-invalid" => $errors->has('position')])->id('position') }}
+    @error('position')
+    <div class="invalid-feedback">{{ $errors->first('position') }}</div>
+    @enderror
+</div>
+
 
