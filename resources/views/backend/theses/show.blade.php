@@ -43,47 +43,7 @@
 
                 <div class="col-md-4">
                     <div class="col-md-12">
-                        <div class="card">
-                            {{-- CARD HEADER--}}
-                            <div class="card-header">
-                                <i class="fa fa-edit"></i> <strong>Dosen Pembimbing</strong>
-                            </div>
-
-                            {{-- CARD BODY--}}
-                            <div class="card-body">
-                                <div class="text-left">
-                                    <table width="100%">
-                                        <thead>
-                                        <tr>
-                                            <th>Pembimbing TA</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody style="overflow: auto; white-space: nowrap">
-                                        @foreach($thesis->supervisor as $supervisor)
-                                            <tr>
-                                                <td>
-                                                    {{ html()->span()->text($supervisor->name) }} {{html()->span()->text(config("central.thesis_supervisor")[$supervisor->pivot->position])->class('badge')->class($supervisor->pivot->position == 0? "badge-primary":($supervisor->pivot->position == 1?"badge-success":"badge-danger"))}}
-                                                </td>
-                                                <td>
-                                                    {!! cui_btn_delete(route('admin.thesis-supervisors.destroy', [$thesis->id,$supervisor->pivot->lecturer_id]), "Anda yakin akan menghapus data pembimbing TA ini?") !!}
-                                                </td>
-                                            </tr>
-
-                                        @endforeach
-                                        <tr>
-                                            <td></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            {{--CARD FOOTER--}}
-                            <div class="card-footer">
-                                <a href="" class="col-12 btn btn-outline-primary">Tambah Pembimbing</a>
-                            </div>
-                        </div>
+                        @include('backend.thesis-supervisors._detail')
                     </div>
                     <div class="col-md-12">
                         <div class="card">
@@ -95,7 +55,7 @@
                             {{-- CARD BODY--}}
                             <div class="card-body">
                                 <div class="text-center">
-
+                                    <a href="{!! route('admin.thesis-supervisors.create',[$thesis->id]) !!}" class="col-12 btn btn-outline-primary">Logbook</a>
                                 </div>
                             </div>
                         </div>
