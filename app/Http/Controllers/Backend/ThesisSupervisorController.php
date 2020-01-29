@@ -26,7 +26,8 @@ class ThesisSupervisorController extends Controller
     }
 
     public function create($thesis_id){
+        $thesis = Thesis::findOrFail($thesis_id);
         $lecturers = Lecturer::pluck('name','id');
-        return view('backend.thesis-supervisors.create',compact('thesis_id','lecturers'));
+        return view('backend.thesis-supervisors.create',compact('thesis_id','lecturers','thesis'));
     }
 }
