@@ -1,18 +1,18 @@
+<!-- Student's name Text Field Input -->
+<div class="form-group">
+    <label class="form-label" for="student_id">Nama Mahasiswa/Nim:</label>
+    {{ html()->text('student_id', $thesis->student->name.' - '.$thesis->student->nim )->class('form-control-plaintext') }}
+</div>
+
 <!-- Topik Text Field Input -->
 <div class="form-group">
     <label class="form-label" for="thesis_id">Topik</label>
     {{ html()->text('thesis_id', $thesis->thesisTopic->name)->class('form-control-plaintext') }}
 </div>
 
-<!-- Student's name Text Field Input -->
-<div class="form-group">
-    <label class="form-label" for="student_id">Nama Mahasiswa</label>
-    {{ html()->text('student_id', $thesis->student->name )->class('form-control-plaintext') }}
-</div>
-
 <!-- title Text Field Input -->
 <div class="form-group">
-    <label class="form-label" for="title">Title:</label>
+    <label class="form-label" for="title">Judul:</label>
     {{ html()->textarea('title', $thesis->title)->class('form-control-plaintext') }}
 </div>
 

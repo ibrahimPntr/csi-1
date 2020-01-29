@@ -80,8 +80,8 @@ return [
     ],
 
     'thesis_supervisor' => [
-        0 => 'submitted',
-        1 => 'accepted',
-        2 => 'rejected'
+        1 => 'Pembimbing Tunggal',
+        2 => 'Pembimbing Utama',
+        3 => 'Pembimbing Pendamping'
     ]
 ];

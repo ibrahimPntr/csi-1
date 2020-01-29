@@ -3,6 +3,7 @@
 @section('breadcrumb')
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
+        'Detail TA' => route('admin.theses.show',[$thesis_id]),
         'Logbook TA' => route('admin.thesis-logbooks.index',[$thesis_id]),
         'Create' => '#'
     ]) !!}

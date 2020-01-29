@@ -20,7 +20,7 @@
                 <div class="col-md-8">
                     <div class="card">
 
-                        {{ html()->form('POST', route('admin.thesis-supervisors.store'))->a->open() }}
+                        {{ html()->form('POST', route('admin.thesis-supervisors.store'))->open() }}
 
                         {{-- CARD HEADER--}}
                         <div class="card-header">

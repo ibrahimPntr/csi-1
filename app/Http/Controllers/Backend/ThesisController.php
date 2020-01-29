@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use App\Models\Thesis;
+use App\Models\ThesisLogbook;
 use App\ThesisTopic;
 use Illuminate\Http\Request;
 
@@ -58,8 +59,8 @@ class ThesisController extends Controller
     public function show(Thesis $thesis)
     {
         $thesis->status = Thesis::$status[$thesis->status];
-//        dd($thesis->supervisor[0]);
-        return view('backend.theses.show',compact('thesis'));
+        $logbooks = ThesisLogbook::where('thesis_id',$thesis->id)->get();
+        return view('backend.theses.show',compact('thesis','logbooks'));
     }
 
     /**
