@@ -18,7 +18,7 @@
                 @foreach($thesis->supervisor as $supervisor)
                     <tr>
                         <td>
-                            {{ html()->span()->text($supervisor->name) }} {{html()->span()->text(config("central.thesis_supervisor")[$supervisor->pivot->position])->class('badge')->class($supervisor->pivot->position == 1? "badge-primary":($supervisor->pivot->position == 2?"badge-success":"badge-danger"))}}
+                            {{ html()->span()->text($supervisor->name) }} {{html()->span()->text(config("central.thesis_supervisor_status")[$supervisor->pivot->status])->class('badge')->class($supervisor->pivot->status == 0? "badge-primary":($supervisor->pivot->status == 1?"badge-success":"badge-danger"))}}
                         </td>
                         <td>
                             {!! cui_btn_delete(route('admin.thesis-supervisors.destroy', [$thesis->id,$supervisor->pivot->lecturer_id]), "Anda yakin akan menghapus data pembimbing TA ini?") !!}

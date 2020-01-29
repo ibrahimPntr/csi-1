@@ -46,7 +46,7 @@ class Thesis extends Model
         }
 
         public function supervisor(){
-            return $this->belongsToMany(Lecturer::class,'thesis_supervisors')->withPivot('position')->withTimestamps();
+            return $this->belongsToMany(Lecturer::class,'thesis_supervisors')->withPivot('position','status')->withTimestamps();
         }
 
         public static function thesisList(int $count){
