@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class ThesisLogbook extends Model
 {
     public static $validation_rules = [
-        'thesis_id' =>'required',
         'supervisor_id' => 'required',
         'date' => 'required',
         'progress'  => 'required',

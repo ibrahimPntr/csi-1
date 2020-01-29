@@ -36,9 +36,9 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th class="text-center">Topik</th>
-                            <th class="text-center">Nama Mahasiswa</th>
-                            <th class="text-center">Judul</th>
+                            <th class="text-center">Nama<br>nim</th>
+                            <th class="text-center">Judul<br>topik</th>
+                            <th class="text-center">Pembimbing</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -46,9 +46,13 @@
                         <tbody>
                         @foreach($theses as $thesis)
                             <tr>
-                                <td>{{ $thesis->thesisTopic->name }}</td>
-                                <td class="text-center">{{ $thesis->student->name }}</td>
-                                <td class="text-center">{{ $thesis->title }}</td>
+                                <td class="text-center">{{ $thesis->student->name }}<br>{!! $thesis->student->nim !!}</td>
+                                <td class="text-center">{{ $thesis->title }}<br><span class="font-italic">({!! $thesis->thesisTopic->name !!})</span></td>
+                                <td class="text-center">
+                                    @foreach($thesis->supervisor as $supervisor)
+                                        {!! $supervisor->name !!}<br>
+                                    @endforeach
+                                </td>
                                 <td class="text-center">{{ $thesis->status }}</td>
                                 <td class="text-center">
                                     {!! cui_btn_view(route('admin.theses.show', [$thesis->id])) !!}

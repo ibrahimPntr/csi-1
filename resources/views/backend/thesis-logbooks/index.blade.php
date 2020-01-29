@@ -3,6 +3,7 @@
 @section('breadcrumb')
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
+        'Detail TA' => route('admin.theses.show',[$thesis_id]),
         'Logbook TA' => route('admin.thesis-logbooks.index',[$thesis_id]),
         'Index' => '#'
     ]) !!}
@@ -36,6 +37,7 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
+                            <th class="text-center">Pembimbing</th>
                             <th class="text-center">Tanggal</th>
                             <th class="text-center">Progress</th>
                             <th class="text-center">Progress File</th>
@@ -46,7 +48,8 @@
                         <tbody>
                         @foreach($thesisLogbooks as $thesisLogbook)
                             <tr>
-                                <td>{{ $thesisLogbook->date->format('d M Y') }}</td>
+                                <td class="text-center">{{ $thesisLogbook->supervisor->lecturer->name }}</td>
+                                <td class="text-center">{{ $thesisLogbook->date->format('d M Y') }}</td>
                                 <td class="text-center">{{ $thesisLogbook->progress }}</td>
                                 <td class="text-center">{{ $thesisLogbook->files_progress }}</td>
                                 <td class="text-center">{{ $thesisLogbook->status }}</td>

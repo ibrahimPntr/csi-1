@@ -54,7 +54,11 @@
 
                             {{-- CARD BODY--}}
                             <div class="card-body">
-                                <div class="text-center">
+                                <div class="text-left">
+                                    @foreach($logbooks as $logbook)
+                                        {!! html()->span($logbook->date->format("d M Y"))->class("font-italic") !!}<br>
+                                        {!! html()->element('p')->text($logbook->progress) !!}
+                                    @endforeach
                                     <a href="{!! route('admin.thesis-logbooks.index',[$thesis->id]) !!}" class="col-12 btn btn-outline-primary">Logbook</a>
                                 </div>
                             </div>

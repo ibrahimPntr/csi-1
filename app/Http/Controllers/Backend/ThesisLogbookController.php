@@ -24,6 +24,7 @@ class ThesisLogbookController extends Controller
     }
 
     public function store(Request $request, $thesis_id){
+        $this->validate($request, ThesisLogbook::$validation_rules);
         $thesisLogbook = ThesisLogbook::create([
             'thesis_id' => $thesis_id,
         ]+$request->all());
