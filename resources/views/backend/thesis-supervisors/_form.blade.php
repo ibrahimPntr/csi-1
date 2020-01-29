@@ -24,10 +24,18 @@
 
 <div class="form-group">
     <label class="form-label" for="position">Posisi:</label>
-    {{ html()->select('position',config('central.thesis_supervisor'))->class(["form-control", "is-invalid" => $errors->has('position')])->id('position') }}
+    {{ html()->select('position',config('central.thesis_supervisor_position'))->class(["form-control", "is-invalid" => $errors->has('position')])->id('position') }}
     @error('position')
     <div class="invalid-feedback">{{ $errors->first('position') }}</div>
     @enderror
 </div>
+
+<div class="form-group">
+    <label class="form-label" for="status">Status:</label>
+    {{ html()->select('status',config('central.thesis_supervisor_status'))->class(["form-control", "is-invalid" => $errors->has('status')])->id('status') }}
+    @error('status')
+    <div class="invalid-feedback">{{ $errors->first('status') }}</div>
+    @enderror
+</div
 
 
