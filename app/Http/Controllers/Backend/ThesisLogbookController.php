@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Thesis;
 use App\Models\ThesisLogbook;
 use App\Models\ThesisSupervisor;
 use Illuminate\Http\Request;
